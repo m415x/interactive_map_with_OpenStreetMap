@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="Mapa interactivo con OpenStreetMap, geolocalización y búsqueda de direcciones">
+
+  <title>Interactive map with OpenStreetMap</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+  <input id="search-input" type="text" placeholder="Buscar dirección" />
+  <button id="search-button">Buscar</button>
+  <input id="address-input" type="text" placeholder="Dirección seleccionada" readonly />
+  <input id="coordinates-input" type="text" placeholder="Coordenadas seleccionadas" readonly />
+
+  <div id="map"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
