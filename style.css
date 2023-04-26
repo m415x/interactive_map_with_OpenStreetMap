@@ -2,3 +2,10 @@
     height: 500px;
     width: 100%;
 }
+.leaflet-control .fa-location-crosshairs {
+    font-size: 1.2em;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
