@@ -1,10 +1,4 @@
-<input id="search-input" type="text" placeholder="Search address" />
-    <button id="search-button">Search</button>
-    <input id="address-input" type="text" placeholder="" readonly />
-    <input id="coordinates-input" type="text" placeholder="" readonly />
-    <div id="map"></div>
-    <script>
-        const map = L.map("map").setView([-34.603722, -58.381592], 12);
+const map = L.map("map").setView([-34.603722, -58.381592], 12);
 
         // función para centrar el mapa en una ubicación
         const centerMap = (lat, lng) => {
