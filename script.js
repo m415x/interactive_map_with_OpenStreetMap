@@ -1,4 +1,4 @@
-const map = L.map("map").setView([-34.603722, -58.381592], 12);
+ const map = L.map("map").setView([-34.603722, -58.381592], 12);
 
         // función para centrar el mapa en una ubicación
         const centerMap = (lat, lng) => {
@@ -68,38 +68,34 @@ const map = L.map("map").setView([-34.603722, -58.381592], 12);
             },
         });
 
-        // crear un botón
-        const locationButton = L.Control.extend({
+        // crea un botón personalizado para actualizar la ubicación
+        const updateLocationButton = L.Control.extend({
             onAdd: function (map) {
-                const container = L.DomUtil.create("div", "location-button");
-                const button = L.DomUtil.create("button", "btn btn-primary", container);
-                button.innerHTML = "Update Location";
+                // crea el botón como un elemento HTML
+                const button = L.DomUtil.create('button', 'update-location-button');
+                button.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
 
-                // agregar un evento click al botón
-                button.addEventListener("click", () => {
-                    // intentar obtener la ubicación actual del usuario
+                // maneja el evento de clic del botón
+                button.addEventListener('click', function () {
+                    // intenta obtener la ubicación actual del usuario
                     navigator.geolocation.getCurrentPosition(
-                        (position) => {
+                        function (position) {
                             const { latitude, longitude } = position.coords;
                             centerMap(latitude, longitude);
                         },
-                        (error) => {
-                            console.log("Error al obtener la ubicación actual:", error);
-                            // si no se puede obtener la ubicación actual, usar una aproximación por IP
-                            const url = "https://ipapi.co/json/";
-                            axios.get(url).then((response) => {
-                                const { latitude, longitude } = response.data;
-                                centerMap(latitude, longitude);
-                            });
+                        function (error) {
+                            console.log('Error al obtener la ubicación actual:', error);
                         }
                     );
                 });
-                return container;
-            },
+
+                // retorna el elemento HTML que representa el botón
+                return button;
+            }
         });
 
-        // agregar el botón al mapa
-        map.addControl(new locationButton());
+        // agrega el botón al mapa
+        map.addControl(new updateLocationButton());
 
 
         const searchButton = document.getElementById("search-button");
